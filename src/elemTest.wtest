@@ -1,0 +1,14 @@
+import elementos.*
+
+describe "barrio con 3 hogares, 2 huertas, 1 mascota, " {
+	test "el barrio es copado" {
+			const hogar1 = new Hogar(mugre = 2, confort = 5)
+		const hogar2 = new Hogar(mugre = 2, confort = 5)
+		const hogar3 = new Hogar(mugre = 2, confort = 5)
+		const huerta1 = new Huerta(capProduccion = 10, nivel = 5)
+		const huerta2 = new Huerta(capProduccion = 2, nivel = 5)
+		const mascota = new Mascota(salud = 100)
+		const barrio1 = new Barrio(elementos = [hogar1, hogar2, hogar3, huerta1, huerta2, mascota])
+		assert.that(barrio1.esCopado())
+	}
+}
