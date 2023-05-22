@@ -1,25 +1,25 @@
 class Plaga{ 
 	var property poblacion
-	method transmiteEnfermedad() = poblacion >= 10
+	method poblaSuf() = poblacion >= 10
+	method condicionAd() = true
+	method transmiteEnfermedad() = self.poblaSuf() and self.condicionAd()
 }
 
 class Cucaracha inherits Plaga{
 	const pesoProm 
 	method nivelDanio() = self.poblacion() / 2
-	override method transmiteEnfermedad() = pesoProm >= 10 and self.transmiteEnfermedad()
+	override method condicionAd() = pesoProm >= 10 
 }
 
-class Pulga inherits Plaga{
+class PulgaYGarrapata inherits Plaga{
 	method nivelDanio() = poblacion * 2
 }
 
-class Garrapata inherits Plaga{
-	method nivelDanio() = poblacion * 2
-}
+
 
 class Mosquito inherits Plaga{
 	method nivelDanio() = self.poblacion()
-	override method transmiteEnfermedad() = poblacion % 3 == 0
+	override method condicionAd() = poblacion % 3 == 0
 	
 	
 }

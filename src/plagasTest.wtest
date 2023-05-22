@@ -1,0 +1,22 @@
+import elementos.*
+import plagas.*
+
+
+describe "plaga de cucarachas" {
+	test "plaga de cucarachas trasmite enfermedad" {
+		const plagaCuc = new Cucaracha(poblacion = 2555, pesoProm = 12)
+		assert.that(plagaCuc.transmiteEnfermedad())
+	}
+	test "plaga de cucarachas no trasmite enfermedad por el peso" {
+		const plagaCuc = new Cucaracha(poblacion = 2555, pesoProm = 8)
+		assert.notThat(plagaCuc.transmiteEnfermedad())
+	}
+	test "plaga de cucarachas no trasmite enfermedad por la poblacion" {
+		const plagaCuc = new Cucaracha(poblacion = 8, pesoProm = 12)
+		assert.notThat(plagaCuc.transmiteEnfermedad())
+	}
+	test "nivel de daño de cucarachas con poblacion 400 es 200"{
+		const plagaCuc = new Cucaracha(poblacion = 400, pesoProm = 12)
+		assert.equals(plagaCuc.nivelDanio(), 200)
+	}
+}
