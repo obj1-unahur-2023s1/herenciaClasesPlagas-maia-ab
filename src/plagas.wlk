@@ -20,4 +20,6 @@ class Garrapata inherits Plaga{
 class Mosquito inherits Plaga{
 	method nivelDanio() = self.poblacion()
 	override method transmiteEnfermedad() = poblacion % 3 == 0
+	
+	
 }
