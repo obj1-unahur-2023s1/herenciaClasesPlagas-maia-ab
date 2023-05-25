@@ -13,9 +13,9 @@ class Huerta{
 	method esBueno() = capProduccion > nivel
 	method recibirAtaqueDe(plaga){
 	if (plaga.transmiteEnfermedad()){
-		capProduccion -= 10 + (plaga.nivelDanio()*10/100)
+		capProduccion = 0.max(capProduccion - (10 + (plaga.nivelDanio()*0.1)))
 	}else{
-		capProduccion -= plaga.nivelDanio()*10/100
+		capProduccion = 0.max(capProduccion - plaga.nivelDanio()*0.1)
 	   }
     } 
 }
@@ -25,7 +25,7 @@ class Mascota{
 	method esBueno() = salud > 250
 	method recibirAtaqueDe(plaga){
 	 if (plaga.transmiteEnfermedad()){
-			salud -= plaga.nivelDanio()
+			salud = 0.max(salud - plaga.nivelDanio())
 		}
 	} 
 }
