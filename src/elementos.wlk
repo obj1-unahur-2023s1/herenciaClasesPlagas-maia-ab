@@ -32,10 +32,7 @@ class Mascota{
 
 class Barrio {
 	var property elementos = []
-	method esCopado() {
-		const buenos = elementos.filter({e => e.esBueno()})
-		const noBuenos = elementos.filter({e => not e.esBueno()})
-		return buenos.size() > noBuenos.size()
-	} 
+	method cantElemBuenos() = elementos.count({e => e.esBueno()})
+	method esCopado() = elementos.size() - self.cantElemBuenos() < self.cantElemBuenos()
 }
 
