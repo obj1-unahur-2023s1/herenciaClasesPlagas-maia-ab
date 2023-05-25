@@ -1,18 +1,33 @@
+import plagas.*
+
 class Hogar{
-	 const mugre 
+	 var property mugre 
 	 const confort
 	 method esBueno() = mugre <= (confort/2)
+	 method recibirAtaqueDe(plaga){mugre += plaga.nivelDanio()} 
 }
 
 class Huerta{
-	const capProduccion
+	var property capProduccion
 	const nivel
 	method esBueno() = capProduccion > nivel
+	method recibirAtaqueDe(plaga){
+	if (plaga.transmiteEnfermedad()){
+		capProduccion -= 10 + (plaga.nivelDanio()*10/100)
+	}else{
+		capProduccion -= plaga.nivelDanio()*10/100
+	   }
+    } 
 }
 
 class Mascota{
-	const salud 
+	var property salud 
 	method esBueno() = salud > 250
+	method recibirAtaqueDe(plaga){
+	 if (plaga.transmiteEnfermedad()){
+			salud -= plaga.nivelDanio()
+		}
+	} 
 }
 
 class Barrio {

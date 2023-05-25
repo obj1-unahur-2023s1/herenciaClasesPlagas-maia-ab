@@ -20,3 +20,31 @@ describe "plaga de cucarachas" {
 		assert.equals(plagaCuc.nivelDanio(), 200)
 	}
 }
+
+describe "plagas despues de atacar" {
+	test "plaga de 30 cucarachas de peso 12 aumenta la poblacion a 33 y el peso a 14" {
+		const hogar = new Hogar(mugre = 5, confort = 10)
+		const plagaCuc = new Cucaracha(poblacion = 30, pesoProm = 12)
+		plagaCuc.atacar(hogar)
+		assert.equals(plagaCuc.poblacion(), 33)
+		assert.equals(plagaCuc.pesoProm(), 14)
+	}
+	test "plaga de 30 pulgas  aumenta la poblacion a 33" {
+		const hogar = new Hogar(mugre = 5, confort = 10)
+		const plagaPulga = new PulgaYGarrapata(poblacion = 30)
+		plagaPulga.atacar(hogar)
+		assert.equals(plagaPulga.poblacion(), 33)
+	}
+	test "plaga de 30 garrapatas  aumenta la poblacion a 36" {
+		const hogar = new Hogar(mugre = 5, confort = 10)
+		const plagaGarrapata = new Garrapata(poblacion = 30)
+		plagaGarrapata.atacar(hogar)
+		assert.equals(plagaGarrapata.poblacion(), 36)
+	}
+	test "plaga de 30 mosquitos  aumenta la poblacion a 33" {
+		const hogar = new Hogar(mugre = 5, confort = 10)
+		const plagaMosquito = new Mosquito(poblacion = 30)
+		plagaMosquito.atacar(hogar)
+		assert.equals(plagaMosquito.poblacion(), 33)
+	}
+}

@@ -1,8 +1,9 @@
 import elementos.*
+import plagas.*
 
 describe "barrio con 3 hogares, 2 huertas, 1 mascota, " {
 	test "el barrio es copado" {
-			const hogar1 = new Hogar(mugre = 2, confort = 5)
+		const hogar1 = new Hogar(mugre = 2, confort = 5)
 		const hogar2 = new Hogar(mugre = 2, confort = 5)
 		const hogar3 = new Hogar(mugre = 2, confort = 5)
 		const huerta1 = new Huerta(capProduccion = 10, nivel = 5)
@@ -10,5 +11,31 @@ describe "barrio con 3 hogares, 2 huertas, 1 mascota, " {
 		const mascota = new Mascota(salud = 100)
 		const barrio1 = new Barrio(elementos = [hogar1, hogar2, hogar3, huerta1, huerta2, mascota])
 		assert.that(barrio1.esCopado())
+	}
+}
+
+describe "elementos despues de ataques" {
+	test "hogar después de plaga de 30 cucarachas de peso 8"{
+		const hogar1 = new Hogar(mugre = 2, confort = 5)
+		const plaga = new 	Cucaracha(pesoProm = 8,poblacion = 30)
+		plaga.atacar(hogar1)
+		assert.equals(hogar1.mugre(), 17)
+	}
+	test "huerta después de plaga de 30 cucarachas de peso 8"{
+		const huerta1 = new Huerta(capProduccion = 50, nivel = 5)
+		const plaga = new 	Cucaracha(pesoProm = 8, poblacion = 30)
+		/*ACA NO TRANSMITE ENFERMEDAD*/
+		plaga.atacar(huerta1)
+		assert.equals(huerta1.capProduccion(), 48.5)
+		/*ACA SI TRANSMITE ENFERMEDAD PORQUE EL ATAQUE MODIFICO SU PESO PROMEDIO*/
+		/*RECORDAR QUE TAMBIEN AUMENTA LA POBLACION UN 10% */
+		plaga.atacar(huerta1)
+		assert.equals(huerta1.capProduccion(), 36.85)
+	}
+	test "mascota después de plaga de 30 cucarachas de peso 12"{
+		const mascota1 = new Mascota(salud = 25)
+		const plaga = new 	Cucaracha(pesoProm = 12,poblacion = 30)
+		plaga.atacar(mascota1)
+		assert.equals(mascota1.salud(), 10)
 	}
 }
